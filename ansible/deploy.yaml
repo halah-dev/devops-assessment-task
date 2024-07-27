@@ -1,0 +1,15 @@
+---
+- name: Deploy sample web application
+  hosts: localhost
+  tasks:
+    - name: Build Docker image
+      command: docker build -t khalidnoor123/sample-app:latest .
+
+    - name: Push Docker image to Docker Hub
+      command: docker push khalidnoor123/sample-app:latest
+
+    - name: Apply Kubernetes manifests
+      command: kubectl apply -f /path/to/deployment.yaml
+
+    - name: Apply Kubernetes service
+      command: kubectl apply -f /path/to/service.yaml
